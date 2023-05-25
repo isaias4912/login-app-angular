@@ -1,0 +1,61 @@
+<form  [formGroup]="formRegister">
+    <div class="row mt-3">
+        <div class="col-md-6 col-12 form-group item-form">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input formControlName="user" type="email"  id="txtUser" name="txtUser" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+                <div *ngIf="dataForm.submitted && formRegister.invalid && $any(f)['user']?.errors">
+                    <div *ngIf="$any(f)['user']?.errors['email']" class="text-danger">
+                        Ingresar un correo válido
+                    </div>
+                    <div *ngIf="$any(f)['user']?.errors['required']" class="text-danger">
+                        Ingrese un correo
+                    </div>
+                    <div *ngIf="$any(f)['user']?.errors['minlength']" class="text-danger">
+                        Ingresar más de 3 caracteres
+                    </div>
+                    <div *ngIf="$any(f)['user']?.errors['maxlength']" class="text-danger">
+                        Ingresar menos de 80 caracteres
+                    </div>
+                </div>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input formControlName="password" type="password" id="txtPassword" name="txtPassword" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+                <div *ngIf="dataForm.submitted && formRegister.invalid && $any(f)['password']?.errors">
+                    <div *ngIf="$any(f)['password']?.errors['required']" class="text-danger">
+                        Ingrese una contraseña
+                    </div>
+                    <div *ngIf="$any(f)['password']?.errors['minlength']" class="text-danger">
+                        Ingresar más de 3 caracteres
+                    </div>
+                    <div *ngIf="$any(f)['password']?.errors['maxlength']" class="text-danger">
+                        Ingresar menos de 80 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="form-outline mb-4">
+                <input formControlName="passwordConfirm" type="password" id="txtPassword" name="txtPassword" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+                <div *ngIf="dataForm.submitted && formRegister.invalid && $any(f)['passwordConfirm']?.errors">
+                    <div *ngIf="$any(f)['passwordConfirm']?.errors['required']" class="text-danger">
+                        Ingrese la confirmacion de la contraseña
+                    </div>
+                    <div *ngIf="$any(f)['passwordConfirm']?.errors['minlength']" class="text-danger">
+                        Ingresar más de 3 caracteres
+                    </div>
+                    <div *ngIf="$any(f)['passwordConfirm']?.errors['maxlength']" class="text-danger">
+                        Ingresar menos de 80 caracteres
+                    </div>
+                    <div *ngIf="$any(f)['passwordConfirm']?.errors['notEqual']" class="text-danger">
+                        No coinciden las contraseñas ingresadas
+                    </div>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" (click)="register()" class="btn btn-primary btn-block mb-4">Registrarme</button>
+        </div>
+    </div>
+</form>
